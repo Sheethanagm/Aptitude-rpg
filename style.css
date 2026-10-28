@@ -1,0 +1,132 @@
+body {
+  background-color: #0B0F19;
+  background-image:
+    radial-gradient(at 0% 0%,   rgba(139, 92, 246, 0.18) 0px, transparent 55%),
+    radial-gradient(at 100% 0%, rgba(6, 182, 212, 0.18)  0px, transparent 55%),
+    radial-gradient(at 50% 100%,rgba(245, 158, 11, 0.10) 0px, transparent 55%);
+  background-attachment: fixed;
+}
+
+/* ── Glassmorphism Card ── */
+.glass-card {
+  background: rgba(17, 24, 39, 0.72);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card-hover:hover {
+  background: rgba(31, 41, 55, 0.85);
+  border-color: rgba(139, 92, 246, 0.45);
+  box-shadow: 0 12px 32px -10px rgba(139, 92, 246, 0.30);
+  transform: translateY(-2px);
+}
+
+/* ── Text Gradients ── */
+.text-gradient-purple {
+  background: linear-gradient(135deg, #C084FC 0%, #8B5CF6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, #FDE047 0%, #F59E0B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-cyan {
+  background: linear-gradient(135deg, #67E8F9 0%, #06B6D4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Custom Scrollbar ── */
+::-webkit-scrollbar             { width: 7px; height: 7px; }
+::-webkit-scrollbar-track       { background: rgba(11, 15, 25, 0.85); }
+::-webkit-scrollbar-thumb       { background: rgba(255,255,255,0.13); border-radius: 6px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(139, 92, 246, 0.55); }
+
+/* ── Keyframe Animations ── */
+
+/* Floating idle animation (hero icons) */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+.animate-float { animation: float 3.2s ease-in-out infinite; }
+
+/* XP text fly-up after a correct answer */
+@keyframes xpFly {
+  0%   { opacity: 1; transform: translateY(0)   scale(1); }
+  50%  { opacity: 1; transform: translateY(-44px) scale(1.35); }
+  100% { opacity: 0; transform: translateY(-88px) scale(0.85); }
+}
+.animate-xp-fly { animation: xpFly 1.3s ease-out forwards; }
+
+/* Combo-pop bounce */
+@keyframes comboPop {
+  0%   { transform: scale(0.4); opacity: 0; }
+  60%  { transform: scale(1.25); }
+  100% { transform: scale(1);    opacity: 1; }
+}
+.animate-combo-pop { animation: comboPop 0.42s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+
+/* Shake (wrong answer) */
+@keyframes shake {
+  10%, 90% { transform: translate3d(-1px, 0, 0); }
+  20%, 80% { transform: translate3d(2px,  0, 0); }
+  30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+  40%, 60% { transform: translate3d(4px,  0, 0); }
+}
+.animate-shake { animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both; }
+
+/* Slow pulse glow for hearts */
+@keyframes pulseGlow {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.6; }
+}
+.animate-pulse-slow { animation: pulseGlow 2.8s ease-in-out infinite; }
+
+/* Level-up badge pop */
+@keyframes levelPop {
+  0%   { transform: scale(0) rotate(-12deg); opacity: 0; }
+  60%  { transform: scale(1.15) rotate(3deg); }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+.animate-level-pop { animation: levelPop 0.55s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+
+/* Boss HP bar pulse when low */
+@keyframes dangerPulse {
+  0%, 100% { box-shadow: 0 0 6px rgba(239,68,68,0.5); }
+  50%       { box-shadow: 0 0 20px rgba(239,68,68,0.9); }
+}
+.animate-danger { animation: dangerPulse 0.9s ease-in-out infinite; }
+
+/* ── Progress bar gradient override ── */
+.xp-bar {
+  background: linear-gradient(90deg, #7C3AED, #4F46E5, #06B6D4);
+  background-size: 200% 100%;
+  animation: gradientShift 3s ease infinite;
+}
+@keyframes gradientShift {
+  0%   { background-position: 0%   50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0%   50%; }
+}
+
+/* ── No horizontal scrollbar on nav ── */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ── Misc helpers ── */
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
